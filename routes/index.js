@@ -33,7 +33,20 @@ const authCheckUser = function (req, res, next) {
     if (req.isAuthenticated()) {
         auth = true;
         data = req.user;
-        if (req.user.role == "user") return next();
+        if (req.user.role == "user" || "admin") return next();
+
+    } else {
+        auth = false;
+        var data = "no";
+        res.render("pages/login", { data, auth, currentRoute: "" });
+    }
+};
+
+const authCheckAdmin = function (req, res, next) {
+    if (req.isAuthenticated()) {
+        auth = true;
+        data = req.user;
+        if (req.user.role == "admin") return next();
 
     } else {
         auth = false;
@@ -152,7 +165,7 @@ Router.post("/login", (req, res, next) => {
                     title: "admin",
                     user: user
                 }
-                res.json(data)
+                return res.json(data)
             }
             var data = {
                 title: "user",

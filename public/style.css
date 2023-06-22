@@ -13,7 +13,7 @@
 }
 
 body {
-    color: var(--primary-text-color)
+    color: var(--primary-text-color);
 }
 
 p {

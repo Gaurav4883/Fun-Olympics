@@ -5,7 +5,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,53 +12,149 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <nav>
-        <div class="main-nav container flex">
-            <a href="/" class="logo">
-                <img src="/yo/logo.jpeg" alt="logo">
-            </a>
+<% if(data.role=="admin" ){ %>
 
-            <div class="nav-links">
-                <ul class="flex">
-                    <a href="/news">
-                        <li class="hover-link nav-item">News</li>
-                    </a>
-                    <a href="/games">
-                        <li class="hover-link nav-item">Games</li>
-                    </a>
-                    <a href="/channel">
-                        <li class="hover-link nav-item">Channel</li>
-                    </a>
-                    <a href="/schedule">
-                        <li class="hover-link nav-item">Game-Schedule</li>
-                    </a>
-                    <a href="/gallery">
-                        <li class="hover-link nav-item">Gallery</li>
-                    </a>
-                    <a href="/contact">
-                        <li class="hover-link nav-item">Contact</li>
-                    </a>
-                </ul>
+    <body>
+        <nav>
+            <div class="main-nav container flex">
+                <a href="/" class="logo">
+                    <img src="/yo/logo.jpeg" alt="logo">
+                </a>
+
+                <div class="nav-links">
+                    <ul class="flex">
+                        <a href="/news">
+                            <li class="hover-link nav-item">News</li>
+                        </a>
+                        <a href="/games">
+                            <li class="hover-link nav-item">Games</li>
+                        </a>
+                        <a href="/channel">
+                            <li class="hover-link nav-item">Channel</li>
+                        </a>
+                        <a href="/schedule">
+                            <li class="hover-link nav-item">Game-Schedule</li>
+                        </a>
+                        <a href="/gallery">
+                            <li class="hover-link nav-item">Gallery</li>
+                        </a>
+                        <a href="/contact">
+                            <li class="hover-link nav-item">Contact</li>
+                        </a>
+                    </ul>
+                </div>
+
+                <div class="login-container">
+                    <span class="profile-icon">&#128102;</span>
+                    <span class="login-text"> Admin </span>
+                </div>
+
             </div>
+        </nav>
 
-            <div class="search-bar flex ">
-                <input type="text" class="news-input" placeholder="e.g. Ronaldo">
-                <button class="search-button">Search</button>
-            </div>
+    </body>
 
-            <div class="login-container">
-                <span class="profile-icon">&#128102;</span>
-                <% if (currentRoute==='login' ) { %>
-                    <span class="login-text "> <a href="/register">Register</a> </span>
-                    <% } else { %>
-                        <span class="login-text "> <a href="/login">Login</a> </span>
-                        <% } %>
-            </div>
+    <% } else if(data.role=="user" ){ %>
 
-        </div>
-    </nav>
+        <body>
+            <nav>
+                <div class="main-nav container flex">
+                    <a href="/" class="logo">
+                        <img src="/yo/logo.jpeg" alt="logo">
+                    </a>
 
-</body>
+                    <div class="nav-links">
+                        <ul class="flex">
+                            <a href="/news">
+                                <li class="hover-link nav-item">News</li>
+                            </a>
+                            <a href="/games">
+                                <li class="hover-link nav-item">Games</li>
+                            </a>
+                            <a href="/channel">
+                                <li class="hover-link nav-item">Channel</li>
+                            </a>
+                            <a href="/schedule">
+                                <li class="hover-link nav-item">Game-Schedule</li>
+                            </a>
+                            <a href="/gallery">
+                                <li class="hover-link nav-item">Gallery</li>
+                            </a>
+                            <a href="/contact">
+                                <li class="hover-link nav-item">Contact</li>
+                            </a>
+                        </ul>
+                    </div>
+
+                    <div class="search-bar flex ">
+                        <input type="text" class="news-input" placeholder="e.g. Ronaldo">
+                        <button class="search-button">Search</button>
+                    </div>
+
+                    <div class="login-container">
+                        <span class="profile-icon">&#128102;</span>
+                        <span class="login-text ">
+                            <%= data.name%>
+                        </span>
+
+                    </div>
+
+                </div>
+            </nav>
+
+        </body>
+
+        <% } else { %>
+
+            <body>
+                <nav>
+                    <div class="main-nav container flex">
+                        <a href="/" class="logo">
+                            <img src="/yo/logo.jpeg" alt="logo">
+                        </a>
+
+                        <div class="nav-links">
+                            <ul class="flex">
+                                <a href="/news">
+                                    <li class="hover-link nav-item">News</li>
+                                </a>
+                                <a href="/games">
+                                    <li class="hover-link nav-item">Games</li>
+                                </a>
+                                <a href="/channel">
+                                    <li class="hover-link nav-item">Channel</li>
+                                </a>
+                                <a href="/schedule">
+                                    <li class="hover-link nav-item">Game-Schedule</li>
+                                </a>
+                                <a href="/gallery">
+                                    <li class="hover-link nav-item">Gallery</li>
+                                </a>
+                                <a href="/contact">
+                                    <li class="hover-link nav-item">Contact</li>
+                                </a>
+                            </ul>
+                        </div>
+
+                        <div class="search-bar flex ">
+                            <input type="text" class="news-input" placeholder="e.g. Ronaldo">
+                            <button class="search-button">Search</button>
+                        </div>
+
+                        <div class="login-container">
+                            <span class="profile-icon">&#128102;</span>
+                            <% if (currentRoute==='login' ) { %>
+                                <span class="login-text "> <a href="/register">Register</a> </span>
+                                <% } else { %>
+                                    <span class="login-text "> <a href="/login">Login</a> </span>
+                                    <% } %>
+                        </div>
+
+                    </div>
+                </nav>
+
+            </body>
+
+            <% } %>
 
 </html>
