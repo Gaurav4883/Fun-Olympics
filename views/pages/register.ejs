@@ -32,6 +32,8 @@
 
             <label for="confirm-password" style="margin-top: 10px;">Confirm Password</label>
             <input type="password" name="confirmPassword" id="confirm-password" required>
+            <button id="show-button2"
+                style="border-radius: 10px; cursor: pointer; margin-left: 240px;padding: 1%;; margin-top: 8px; font-size: 15px;">Show</button>
 
             <button style="margin-top: 2px;" class="register-btn" type="submit">Register</button>
             <a style="margin-top: 5px;" href="/login">Already have an account?</a>
@@ -120,13 +122,11 @@
 
         </script>
 
-
-
-
-
         <script>
             const passwordField = document.getElementById('password')
             const showButton = document.getElementById("show-button")
+            const passwordField2 = document.getElementById('confirm-password')
+            const showButton2 = document.getElementById("show-button2")
 
             showButton.addEventListener("click", (e) => {
                 e.preventDefault()
@@ -138,6 +138,19 @@
                     showButton.textContent = "Show";
                 }
             });
+
+            showButton2.addEventListener("click", (e) => {
+                e.preventDefault()
+                if (passwordField2.type === "password" && passwordField2.value !== '') {
+                    passwordField2.type = "text2";
+                    showButton2.textContent = "Hide";
+                } else {
+                    passwordField2.type = "password";
+                    showButton2.textContent = "Show";
+                }
+            });
+
+
         </script>
 
         <script>
